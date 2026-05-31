@@ -26,9 +26,13 @@ function nextQuestion() {
 
   if (op === '×') {
     a = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-    b = Math.floor(Math.random() * 9) + 2;
+    b = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
   } else if (op === '÷') {
-    b = Math.floor(Math.random() * 9) + 2;
+    if (difficulty === 'hard') {
+      b = Math.floor(Math.random() * 90) + 10;
+    } else {
+      b = Math.floor(Math.random() * 9) + 2;
+    }
     a = b * (Math.floor(Math.random() * (range.max - range.min + 1)) + range.min);
   } else {
     a = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
