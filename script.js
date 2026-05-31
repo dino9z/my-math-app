@@ -22,14 +22,20 @@ function nextQuestion() {
   const ops = difficulty === 'easy' ? ['+', '-'] : ['+', '-', '×', '÷'];
   const op = ops[Math.floor(Math.random() * ops.length)];
 
-  let a = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-  let b = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+  let a, b;
+
+  if (op === '×') {
+    a = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+    b = Math.floor(Math.random() * 9) + 2;
+  } else if (op === '÷') {
+    b = Math.floor(Math.random() * 9) + 2;
+    a = b * (Math.floor(Math.random() * (range.max - range.min + 1)) + range.min);
+  } else {
+    a = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+    b = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+  }
 
   if (op === '-' && b > a) [a, b] = [b, a];
-  if (op === '÷') {
-    b = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
-    a = b * (Math.floor(Math.random() * 10) + 1);
-  }
 
   if (op === '+') currentAnswer = a + b;
   if (op === '-') currentAnswer = a - b;
