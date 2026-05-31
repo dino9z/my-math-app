@@ -27,7 +27,7 @@ function nextQuestion() {
 
   if (op === '-' && b > a) [a, b] = [b, a];
   if (op === '÷') {
-    b = Math.floor(Math.random() * 9) + 1;
+    b = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
     a = b * (Math.floor(Math.random() * 10) + 1);
   }
 
