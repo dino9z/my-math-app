@@ -12,9 +12,9 @@ function setDifficulty(level) {
 }
 
 function getRange() {
-  if (difficulty === 'easy') return 10;
-  if (difficulty === 'medium') return 50;
-  return 100;
+  if (difficulty === 'easy') return { min: 1, max: 10 };
+  if (difficulty === 'medium') return { min: 10, max: 100 };
+  return { min: 100, max: 1000 };
 }
 
 function nextQuestion() {
@@ -22,8 +22,8 @@ function nextQuestion() {
   const ops = difficulty === 'easy' ? ['+', '-'] : ['+', '-', '×', '÷'];
   const op = ops[Math.floor(Math.random() * ops.length)];
 
-  let a = Math.floor(Math.random() * range) + 1;
-  let b = Math.floor(Math.random() * range) + 1;
+  let a = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+  let b = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
 
   if (op === '-' && b > a) [a, b] = [b, a];
   if (op === '÷') {
