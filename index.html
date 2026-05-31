@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Math Practice</h1>
+
+    <div class="difficulty">
+      <button onclick="setDifficulty('easy')" id="btn-easy" class="active">Easy</button>
+      <button onclick="setDifficulty('medium')" id="btn-medium">Medium</button>
+      <button onclick="setDifficulty('hard')" id="btn-hard">Hard</button>
+    </div>
+
+    <div class="score-box">
+      <span>✅ Correct: <strong id="correct">0</strong></span>
+      <span>❌ Wrong: <strong id="wrong">0</strong></span>
+      <span>🔥 Streak: <strong id="streak">0</strong></span>
+    </div>
+
+    <div class="question-box">
+      <p id="question">Press Start to begin!</p>
+    </div>
+
+    <input type="number" id="answer" placeholder="Your answer..." />
+
+    <div class="buttons">
+      <button onclick="checkAnswer()">Submit</button>
+      <button onclick="nextQuestion()">Skip</button>
+      <button onclick="resetScore()">Reset</button>
+    </div>
+
+    <p id="feedback"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
